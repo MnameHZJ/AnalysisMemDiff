@@ -1,9 +1,9 @@
-package com.github.mname.analysis.mem.addr;
+package com.github.mname.analysis.mem.diff;
 
 import cn.hutool.core.comparator.CompareUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.HexUtil;
-import com.github.mname.analysis.mem.addr.vo.MemInfo;
+import com.github.mname.analysis.mem.diff.vo.MemInfo;
 
 import java.io.File;
 import java.math.BigInteger;
@@ -37,7 +37,14 @@ public class Main {
 
         List<MemInfo> subList = removeOverlapping(pmapMemList, nmtMemList);
 
-        subList.forEach(m -> System.out.println(Long.toHexString(m.getStartAddr()) + "-" + Long.toHexString(m.getEndAddr())));
+        subList.forEach(m -> {
+            System.out.printf("gdb --batch --pid <pid> -ex \"dump memory ./memory-%s-%s.dump 0x%s 0x%s\" && strings memory-%s-%s.dump > strings-%s-%s.txt \n",
+                              Long.toHexString(m.getStartAddr()), Long.toHexString(m.getEndAddr()),
+                              Long.toHexString(m.getStartAddr()), Long.toHexString(m.getEndAddr()),
+                              Long.toHexString(m.getStartAddr()), Long.toHexString(m.getEndAddr()),
+                              Long.toHexString(m.getStartAddr()), Long.toHexString(m.getEndAddr())
+                              );
+        });
 
     }
 
@@ -160,7 +167,7 @@ public class Main {
             }
         }
 
-        mergeList.forEach(m -> System.out.println(Long.toHexString(m.getStartAddr()) + "-" + Long.toHexString(m.getEndAddr())));
+//        mergeList.forEach(m -> System.out.println(Long.toHexString(m.getStartAddr()) + "-" + Long.toHexString(m.getEndAddr())));
         return mergeList;
     }
 

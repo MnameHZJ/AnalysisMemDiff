@@ -1,4 +1,4 @@
-package com.github.mname.analysis.mem.addr.vo;
+package com.github.mname.analysis.mem.diff.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
