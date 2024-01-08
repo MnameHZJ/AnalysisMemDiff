@@ -110,9 +110,9 @@ public class Main {
             BigInteger startAddr = HexUtil.toBigInteger(startAddrStr);
             String perm = columns[1];
             String device = columns[3];
-            /*if ("---p".equals(perm) || !"00:00".equals(device)) {
+            if ("---p".equals(perm) || !"00:00".equals(device)) {
                 continue;
-            }*/
+            }
 
             int size = Integer.parseInt(columns[5]);
             BigInteger endAddr = startAddr.add(BigInteger.valueOf(size * 1024L));
