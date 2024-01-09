@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * @author <a href="huangzhuojie@wxchina.com">huangzhuojie</a>
+ * @author huangzhuojie
  * @date 2024/1/6
  */
 @Data
